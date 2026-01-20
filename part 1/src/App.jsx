@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-const Header = ({ text }) => <h1>{text}</h1>
+const Header = ({ text }) => 
+<h1>{text}</h1>
 
 const clicker = (setter, value) => () => setter(value + 1)
 
@@ -26,7 +27,7 @@ const App = () => {
       <div>bad {bad}</div>
       <div>all {all}</div>
       <div>average {isNaN(average) ? 0 : average}</div>
-      <div>positive {isNaN(positive) ? 0 : positive} %</div>
+      <div>positive {isNaN(positive) ? 0 : positive} %</div> 
     </div>
   )
 }
