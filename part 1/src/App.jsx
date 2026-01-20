@@ -39,7 +39,11 @@ const App = () => {
       <button onClick={clicker(setBad, bad)}>bad</button>
 
       <Header text="statistics" />
-      <Statistics good={good} neutral={neutral} bad={bad} />
+      {good + neutral + bad > 0 ? (
+        <Statistics good={good} neutral={neutral} bad={bad} />
+      ) : (
+        <div>no feedback given</div>
+      )}
     </div>
   )
 }
