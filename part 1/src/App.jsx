@@ -4,6 +4,14 @@ const Header = ({ text }) => {
   return <h1>{text}</h1>
 }
 
+const Button = ({ onClick, text }) => {
+  return <button onClick={onClick}>{text}</button>
+}
+
+const StatisticLine = ({ text, value }) => {
+  return <div>{text} {value}</div>
+}
+
 const clicker = (setter, value) => {
   return () => setter(value + 1)
 }
@@ -15,12 +23,12 @@ const Statistics = ({ good, neutral, bad }) => {
 
   return (
     <div>
-      <div>good {good}</div>
-      <div>neutral {neutral}</div>
-      <div>bad {bad}</div>
-      <div>all {all}</div>
-      <div>average {isNaN(average) ? 0 : average}</div>
-      <div>positive {isNaN(positive) ? 0 : positive} %</div> 
+      <StatisticLine text="good" value={good} />
+      <StatisticLine text="neutral" value={neutral} />
+      <StatisticLine text="bad" value={bad} />
+      <StatisticLine text="all" value={all} />
+      <StatisticLine text="average" value={isNaN(average) ? 0 : average} />
+      <StatisticLine text="positive" value={isNaN(positive) ? 0 : positive + ' %'} />
     </div>
   )
 }
@@ -34,9 +42,9 @@ const App = () => {
   return (
     <div>
       <Header text="give feedback" />
-      <button onClick={clicker(setGood, good)}>good</button>
-      <button onClick={clicker(setNeutral, neutral)}>neutral</button>
-      <button onClick={clicker(setBad, bad)}>bad</button>
+      <Button onClick={clicker(setGood, good)} text="good" />
+      <Button onClick={clicker(setNeutral, neutral)} text="neutral" />
+      <Button onClick={clicker(setBad, bad)} text="bad" />
 
       <Header text="statistics" />
       {good + neutral + bad > 0 ? (
